@@ -11,6 +11,10 @@
 		"Admin":{
 			"denied":[],
 			"allowed":["*"]
+		},
+		"Developer":{
+			"denied":[],
+			"allowed":["*"]
 		}
 	},
 	"App":{
@@ -23,6 +27,10 @@
 			"allowed":[]
 		},
 		"Admin":{
+			"denied":[],
+			"allowed":["*"]
+		},
+		"Developer":{
 			"denied":[],
 			"allowed":["*"]
 		}
@@ -40,6 +48,10 @@
 		"Admin":{
 			"denied":["*"],
 			"allowed":["logout"]
+		},
+		"Developer":{
+			"denied":["*"],
+			"allowed":["login"]
 		}
 	},
 

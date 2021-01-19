@@ -7,7 +7,7 @@ class Access{
 		if (Session::exists('user')) {
 			return "User";
 		}elseif (PRODUCTION) {
-			return "Admin";
+			return "Developer";
 		}else{
 			return 'Guest';
 		}
