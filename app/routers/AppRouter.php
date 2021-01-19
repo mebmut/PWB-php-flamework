@@ -44,6 +44,17 @@ class AppRouter extends Router{
     }
 
     public function gen_model(string $model=''){
+        $model = new GenModel;
+        if ($this->request->isPost()) {
+            $this->request->csrfCheck();
+            $model->assign($this->request->get());
+            $model->validatior();
+            if ($model->validationPassed()) {
+               if ($model->save()) {
+                   Router::redirect('app/gen_model/md5/cript/ltp/');
+               }
+            }
+        }
         if (!empty($model)) {
             $ext = ".php";
             $fullPath = ROOT.'app'.DS.'queries'.DS.ucfirst($model).$ext;
@@ -69,6 +80,9 @@ class AppRouter extends Router{
         }else{
             echo "input the model name in the url eg /gen_model/users";
         }
+        $this->view->errors = $model->getErrorMessages();
+        $this->view->model = $model;
+        $this->view->settings('settings/gen_model');
     }
 
     public function migrations(){
