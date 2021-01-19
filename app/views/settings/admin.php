@@ -12,6 +12,7 @@ $this->start('head'); ?>
             <form action="" method="post">
                 <?=csrfInput()?>
                 <div class="input-control">
+                    <?=getError('admin',$this->errors)?>
                     <label for="email">Email</label>
                     <input id="email" type="email" name="email" value="<?=$this->user->email?>">
                     <?=getError('email',$this->errors)?>

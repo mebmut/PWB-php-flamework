@@ -5,14 +5,15 @@ use Core\Model;
 use Core\Validation;
 
 class SetAdmin extends Model {
-  public $password , $username, $email, $confirm;
+  public $password , $username, $email, $confirm, $admin;
+  private $path = ROOT.'app'.DS.'settings'.DS.'admin.json';
   protected static $_table = 'tmp_fake';
 
   public function validator(){
     $this->runValidation(new validation($this,'required','email','required'));
     $this->runValidation(new validation($this,'required','username','required'));
     $this->runValidation(new Validation($this,'required','password','required'));
-    $this->runValidation(new Validation($this,'required','confirm@password confirm','required'));
+    $this->runValidation(new Validation($this,'fileExists','admin',$this->path,'Site Developer is already set'));
   }
 
   public function save(){

@@ -1,7 +1,7 @@
 <?php
 namespace App\Routers;
 use Core\{Session,Router};
-use App\Queries\{SetAdmin,SetDatabase,GenMigration};
+use App\Queries\{SetAdmin,SetDatabase,GenMigration,GenModel};
 
 class AppRouter extends Router{
 
@@ -17,13 +17,14 @@ class AppRouter extends Router{
             $model->validator();
             if($model->validationPassed()){
                 if ($model->save()) {
+                    Session::addMsg('success','Site admin has been set');
                     Router::redirect('home');
                 }
             }
         }
         $this->view->errors = $model->getErrorMessages();
         $this->view->user = $model;
-        $this->view->settings('settings/admin');
+        $this->view->settings('admin');
     }
 
     public function database(){
@@ -34,55 +35,32 @@ class AppRouter extends Router{
             $model->validator();
             if($model->validationPassed()){
                 if ($model->save()) {
+                    Session::addMsg('success','Database info has been saved');
                     Router::redirect('home');
                 }
             }
         }
         $this->view->errors = $model->getErrorMessages();
         $this->view->db = $model;
-        $this->view->settings('settings/database');
+        $this->view->settings('database');
     }
 
-    public function gen_model(string $model=''){
+    public function gen_model(){
         $model = new GenModel;
         if ($this->request->isPost()) {
             $this->request->csrfCheck();
             $model->assign($this->request->get());
-            $model->validatior();
+            $model->validator();
             if ($model->validationPassed()) {
                if ($model->save()) {
+                   Session::addMsg('success','Model has been created');
                    Router::redirect('app/gen_model/md5/cript/ltp/');
                }
             }
         }
-        if (!empty($model)) {
-            $ext = ".php";
-            $fullPath = ROOT.'app'.DS.'queries'.DS.ucfirst($model).$ext;
-            $content = '<?php'."\n";
-            $content .= 'namespace App\Queries;'."\n";
-            $content .= ''."\n";
-            $content .= 'use Core\{Model,Validation};'."\n";
-            $content .= ''."\n";
-            $content .= 'class '.ucfirst($model).' extends Model {'."\n";
-                $content .= ''."\n";
-                $content .= '     protected static $_table = \'tmp_fake\';'."\n";
-                $content .= ''."\n";
-                $content .= '     public function validator(){'."\n";
-                $content .= ''."\n";
-                $content .= '     }'."\n";
-            $content .= '}'."\n";
-    
-            if (!file_exists($fullPath)) {
-                $resp = file_put_contents($fullPath,$content);
-            }else {
-                echo "Model $model already exists";
-            }
-        }else{
-            echo "input the model name in the url eg /gen_model/users";
-        }
         $this->view->errors = $model->getErrorMessages();
         $this->view->model = $model;
-        $this->view->settings('settings/gen_model');
+        $this->view->settings('gen_model');
     }
 
     public function migrations(){
@@ -108,6 +86,6 @@ class AppRouter extends Router{
 
         $this->view->errors = $model->getErrorMessages();
         $this->view->migration = $model;
-        $this->view->settings('settings/migrations');
+        $this->view->settings('migrations');
     }
 }

@@ -143,4 +143,9 @@ class Validation{
  	$this->msg = (!empty($this->msg)) ? $this->msg : $msg;
  }
 
+ public function fileExists (){
+  $msg = $this->fieldName.' already exists';
+  $this->msg = (!empty($this->msg)) ? $this->msg : $msg;
+  return (!file_exists($this->rule));
+}
 }

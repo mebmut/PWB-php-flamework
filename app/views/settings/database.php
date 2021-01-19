@@ -11,6 +11,7 @@ $this->start('head'); ?>
             <form action="" method="post">
                 <?=csrfInput()?>
                 <div class="input-control">
+                    <?=getError('database',$this->errors)?>
                     <label for="dbname">Database Name</label>
                     <input id="dbname" type="text" name="dbname" value="<?=$this->db->dbname?>">
                     <?=getError('dbname',$this->errors)?>

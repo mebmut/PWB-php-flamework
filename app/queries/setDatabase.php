@@ -5,13 +5,15 @@ use Core\Model;
 use Core\Validation;
 
 class SetDatabase extends Model {
-  public $dbname, $dbhost, $dbpass, $dbuser;
+  public $dbname, $dbhost, $dbpass, $dbuser,$database;
+  private $path = ROOT.'app'.DS.'settings'.DS.'database.json';
   protected static $_table = 'tmp_fake';
 
   public function validator(){
     $this->runValidation(new validation($this,'required','dbname@database name','required'));
     $this->runValidation(new validation($this,'required','dbuser@databaase user','required'));
     $this->runValidation(new Validation($this,'required','dbhost@database host','required'));
+    $this->runValidation(new validation($this,'fileExists','database',$this->path));
   }
   public function save(){
     if (!file_exists(ROOT.'app'.DS.'settings'.DS.'database.json')) {

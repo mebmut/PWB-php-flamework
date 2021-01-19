@@ -26,8 +26,8 @@ namespace Core;
      */
     public function settings($viewName) {
       $viewString = self::viewString($viewName);
-      if(file_exists(ROOT.'app'.DS.'views'.DS.$viewString.'.php')) {
-        include(ROOT.'app'.DS.'views'.DS.$viewString.'.php');
+      if(file_exists(ROOT.'app'.DS.'views'.DS.'settings'.DS.$viewString.'.php')) {
+        include(ROOT.'app'.DS.'views'.DS.'settings'.DS.$viewString.'.php');
         include(ROOT.'app'.DS.'views'.DS.'layouts'.DS.$this->layout.'.php');
       } else {
         die('The view \"' . $viewName . '\" does not exist.');
