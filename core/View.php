@@ -19,7 +19,11 @@ namespace Core;
         die('The view \"' . $viewName . '\" does not exist.');
       }
     }
-
+    /**
+     * used to render the layout and settings view
+     * @method settings
+     * @param  string $viewName path to view
+     */
     public function settings($viewName) {
       $viewString = self::viewString($viewName);
       if(file_exists(ROOT.'app'.DS.'views'.DS.$viewString.'.php')) {
@@ -29,7 +33,21 @@ namespace Core;
         die('The view \"' . $viewName . '\" does not exist.');
       }
     }
-
+    /**
+     * used to render the layout and aadmin view
+     * @method Admin
+     * @param  string $viewName path to view
+     */
+    public function admin($viewName) {
+      $viewString = self::viewString($viewName);
+      if(file_exists(ROOT.'app'.DS.'views'.DS.'admin'.DS.$viewString.'.php')) {
+        include(ROOT.'app'.DS.'views'.DS.'admin'.DS.$viewString.'.php');
+        include(ROOT.'app'.DS.'views'.DS.'layouts'.DS.$this->layout.'.php');
+      } else {
+        die('The view \"' . $viewName . '\" does not exist.');
+      }
+    }
+    
     public static function viewString($viewName){
       $viewAry = explode('/', $viewName);
       $viewString = implode(DS, $viewAry);
