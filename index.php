@@ -3,7 +3,7 @@ define('DEBUG',true);
 define('PRODUCTION',true);
 define('DS',DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__).DS);
-define('URLROOT','/pezani/');
+define('URLROOT','/pwb/');
 include(ROOT.'core'.DS.'Functions.php');
 function classLoader($className){
     $classAry = explode('\\',$className);
