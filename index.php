@@ -23,7 +23,7 @@ function classLoader($className){
 }
 // calls the autoload function 
 spl_autoload_register('classLoader');
-// start sessions 
+// starts sessions for the app
 session_start();
-// starts the application and runs athetification checks 
+// starts the application and runs authetification checks 
 run_application();
