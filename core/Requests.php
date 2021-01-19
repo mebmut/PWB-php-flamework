@@ -31,7 +31,11 @@ class Requests{
       // return entire request array and sanitize it
       $data = [];
       foreach($_REQUEST as $field => $value){
-        $data[$field] = trim(sanitize($value));
+        if (is_array($value)) {
+          $data['array'] = $value;
+        }else{
+          $data[$field] = trim(sanitize($value));
+        }
       }
       return $data;
     }

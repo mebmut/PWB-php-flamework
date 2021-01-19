@@ -20,6 +20,30 @@ $this->start('head'); ?>
                     <input id="table" type="text" name="table" value="<?=$this->model->table?>">
                     <?=getError('table',$this->errors)?>
                 </div>
+                <fieldset>
+                   <div class="fieldset-control">
+                        <label for="construct">construct</label>
+                        <input type="checkbox" name="construct" id="construct">
+                   </div>
+
+                   <div class="fieldset-control">
+                        <label for="onConstruct">onConstruct</label>
+                        <input type="checkbox" name="onConstruct" id="onConstruct">
+                   </div>
+
+                   <div class="fieldset-control">
+                        <label for="validator">Validator</label>
+                        <input type="checkbox" name="validator" id="validator">
+                   </div>
+                   <div class="fieldset-control">
+                        <label for="beforeSave">BeforeSave</label>
+                        <input type="checkbox" name="beforeSave" id="beforeSave">
+                   </div>
+                   <div class="fieldset-control">
+                        <label for="afterSave">AfterSave</label>
+                        <input type="checkbox" name="afterSave" id="afterSave">
+                   </div>
+                </fieldset>
                 <div class="input-control">
                     <input id="submit" type="submit" value="Genarate model">
                 </div>

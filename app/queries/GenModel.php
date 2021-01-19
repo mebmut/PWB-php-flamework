@@ -5,7 +5,8 @@ use Core\{Model,Validation};
 
 class GenModel extends Model {
 
-     public $model='', $table; 
+     public $model='', $table, $construct = false, $afterSave = false;
+     public $onConstruct = false, $validator = false, $beforeSave = false; 
      private $path = ROOT.'app'.DS.'queries'.DS;
 
      protected static $_table = 'tmp_fake';
@@ -31,9 +32,37 @@ class GenModel extends Model {
               $content .= ''."\n";
               $content .= '     protected static $_table = \''.$this->table.'\';'."\n";
               $content .= ''."\n";
-              $content .= '     public function validator(){'."\n";
-              $content .= ''."\n";
-              $content .= '     }'."\n";
+              if ($this->construct) {
+               $content .= '     public function __construct(){'."\n";
+                 $content .= "        //Code will go here"."\n";
+               $content .= '     }'."\n";
+               $content .= ''."\n";
+              }
+              if ($this->beforeSave) {
+               $content .= '     public function beforeSave(){'."\n";
+                 $content .= "        //Code will go here"."\n";
+               $content .= '     }'."\n";
+               $content .= ''."\n";
+              }
+              if ($this->validator) {
+                $content .= '     public function validator(){'."\n";
+                   $content .= "        //Code will go here"."\n";
+                $content .= '     }'."\n";
+                $content .= ''."\n";
+              }
+              if ($this->onConstruct) {
+               $content .= '     public function onConstruct(){'."\n";
+                 $content .= "        //Code will go here"."\n";
+               $content .= '     }'."\n";
+               $content .= ''."\n";
+              }
+              if ($this->afterSave) {
+               $content .= '     public function afterSave(){'."\n";
+                    $content .= "        //Code will go here"."\n";
+               $content .= '     }'."\n";
+               $content .= ''."\n";
+              }
+
           $content .= '}'."\n";
   
           if (!file_exists($fullPath)) {
