@@ -11,7 +11,6 @@ namespace Core;
      * @param  string $viewName path to view
      */
     public function page($viewName) {
-
       $viewString = self::viewString($viewName);
       if(file_exists(ROOT.'app'.DS.'themes'.DS.'default'.DS.$viewString.'.php')) {
         include(ROOT.'app'.DS.'themes'.DS.'default'.DS.$viewString.'.php');
@@ -22,7 +21,6 @@ namespace Core;
     }
 
     public function settings($viewName) {
-
       $viewString = self::viewString($viewName);
       if(file_exists(ROOT.'app'.DS.'views'.DS.$viewString.'.php')) {
         include(ROOT.'app'.DS.'views'.DS.$viewString.'.php');
