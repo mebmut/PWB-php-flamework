@@ -29,7 +29,17 @@ namespace Core;
         die('The view \"' . $viewName . '\" does not exist.');
       }
     }
-
+    
+    public function admin($viewName) {
+      $viewString = self::viewString($viewName);
+      if(file_exists(ROOT.'app'.DS.'views'.DS.'admin'.DS.$viewString.'.php')) {
+        include(ROOT.'app'.DS.'views'.DS.'admin'.DS.$viewString.'.php');
+        include(ROOT.'app'.DS.'views'.DS.'layouts'.DS.$this->layout.'.php');
+      } else {
+        die('The view \"' . $viewName . '\" does not exist.');
+      }
+    }
+    
     public static function viewString($viewName){
       $viewAry = explode('/', $viewName);
       $viewString = implode(DS, $viewAry);
