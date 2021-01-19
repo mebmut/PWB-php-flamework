@@ -37,7 +37,7 @@ namespace Core;
      * used to render the layout and aadmin view
      * @method Admin
      * @param  string $viewName path to view
-     */
+     */  
     public function admin($viewName) {
       $viewString = self::viewString($viewName);
       if(file_exists(ROOT.'app'.DS.'views'.DS.'admin'.DS.$viewString.'.php')) {
