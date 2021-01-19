@@ -1,0 +1,27 @@
+{
+    "Psers":{
+        "Add user" : "admin/users/add",
+        "Admins" : "admin/users/admins",
+        "Deleted" : "admin/users/deleted",
+        "Active" : "admin/users/active",
+        "Inactive" : "admin/users/inactive",
+        "Paid user" : "admin/users/paid",
+        "All users" : "admin/users/all"
+    },
+    
+    "Pages":{
+        "Add Page" : "admin/pages/add",
+        "Manage" : "admin/pages/manage",
+        "Deleted" : "admin/pages/deleted",
+        "Active" : "admin/pages/active",
+        "Inactive" : "admin/pages/inactive",
+        "Paid pages" : "admin/pages/paid",
+        "All pages" : "admin/pages/all"
+    },
+
+    "Navigations" : {
+        "Add" : "admin/navigations/add",
+        "View" : "admin/navigations/view",
+        "Manage" : "admin/navigations/manage"
+    }
+}
