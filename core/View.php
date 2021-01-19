@@ -13,7 +13,6 @@ namespace Core;
     public function page($viewName) {
 
       $viewString = self::viewString($viewName);
-
       if(file_exists(ROOT.'app'.DS.'themes'.DS.'default'.DS.$viewString.'.php')) {
         include(ROOT.'app'.DS.'themes'.DS.'default'.DS.$viewString.'.php');
         include(ROOT.'app'.DS.'views'.DS.'layouts'.DS.$this->layout.'.php');
