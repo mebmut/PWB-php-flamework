@@ -1,0 +1,7 @@
+{
+    "home" : "home",
+    "Set Admin" : "app/admin/add/in_apset/opt",
+    "Set database" : "app/database/diff/check",
+    "Run migrations" : "app/migrations/gen/run/md5/spl_cha",
+    "Create Model" : "app/gen_model"
+}

@@ -1,0 +1,14 @@
+{
+    "home" : "home",
+    "admin" : "admin",
+    "pages" : {
+        "about" : "page/about",
+        "services" : "page/services",
+        "contact us" : "page/contact"
+    },
+    "account" : {
+        "register" : "auth/register",
+        "login" : "auth/login",
+        "logout" : "auth/logout"
+    }
+}
